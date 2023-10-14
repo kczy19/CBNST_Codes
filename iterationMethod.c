@@ -31,6 +31,7 @@ int main()
             printf("Iteration %d x = %f fx(%f) = %f\n", cnt++, x, x, fxn(x));
             x = fifx(x);
         } while (fabsf(fxn(x)) >= err);
+        printf("Approximated Root: %f\n", x);
     }
     else
     {
