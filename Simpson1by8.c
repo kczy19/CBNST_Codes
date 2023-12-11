@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <math.h>
 
-float simpone(float x[], float y[], int n)
+float simpthree(float x[], float y[], int n)
 {
     float ans = 0.0;
     float h = fabs(x[1] - x[0]);
     for (int i = 1; i < n - 1; i++)
     {
-        if (i % 2 == 0)
+        if (i % 3 == 0)
         {
-            ans += ((2 * h) * (y[i])) / 3;
+            ans += ((6 * h) * (y[i])) / 8;
         }
         else
         {
-            ans += ((4 * h) * (y[i])) / 3;
+            ans += ((9 * h) * (y[i])) / 8;
         }
     }
-    ans += (h * (y[0] + y[n - 1])) / 3;
+    ans += ((3 * h) * (y[0] + y[n - 1])) / 8;
     return ans;
 }
 int main()
@@ -37,6 +37,6 @@ int main()
     {
         scanf("%f", &datay[i]);
     }
-    float res = simpone(datax, datay, n);
-    printf("area under the curve for simpsons 1/3rd integration is %f", res);
+    float res = simpthree(datax, datay, n);
+    printf("area under the curve for simpsons 3/8 integration is %f", res);
 }
