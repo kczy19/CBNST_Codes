@@ -1,17 +1,23 @@
 #include <stdio.h>
 #include <math.h>
 
-float trapozidel(float datax[], float datay[], int n)
+float simpone(float x[], float y[], int n)
 {
-    float h = fabs(datax[1] - datax[0]);
-    float result = 0.0;
+    float ans = 0.0;
+    float h = fabs(x[1] - x[0]);
     for (int i = 1; i < n - 1; i++)
     {
-        result += h * datay[i];
+        if (i % 2 == 0)
+        {
+            ans += ((2 * h) * (y[i])) / 3;
+        }
+        else
+        {
+            ans += ((4 * h) * (y[i])) / 3;
+        }
     }
-    result += (h * (datay[0] + datay[n - 1])) / 2;
-
-    return result;
+    ans += (h * (y[0] + y[n - 1])) / 3;
+    return ans;
 }
 int main()
 {
@@ -31,7 +37,6 @@ int main()
     {
         scanf("%f", &datay[i]);
     }
-
-    float res = trapozidel(datax, datay, n);
-    printf("area under the curve for trapozidel integration is %f:", res);
+    float res = simpone(datax, datay, n);
+    printf("area under the curve for simpsons 1/3rd integration is %f", res);
 }
